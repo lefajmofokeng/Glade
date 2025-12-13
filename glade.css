@@ -1,0 +1,265 @@
+/* --- scoped CSS start --- */
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Outer Wrapper */
+    .cr-section-wrapper {
+        width: 100%;
+        background-color: #0a0a0a;
+        font-family: 'Inter', sans-serif;
+        box-sizing: border-box;
+        padding: 40px 20px;
+    }
+
+    .cr-section-wrapper * {
+        box-sizing: border-box;
+    }
+
+    /* Header Typography */
+    .cr-header-area {
+        padding-left: 10px;
+        margin-bottom: 40px;
+    }
+
+    .cr-section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 8px 0;
+    }
+
+    .cr-section-subtitle {
+        font-size: 1.3rem;
+        color: #888;
+        margin: 0;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* Word Target & Arrow Logic */
+    .cr-target-word {
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+    }
+
+    .cr-arrow-svg {
+        position: absolute;
+        width: 110px;
+        height: 60px;
+        top: 10px;  /* Moves arrow down slightly */
+        left: -115px; /* Moves arrow to the left of the word */
+        pointer-events: none;
+        overflow: visible;
+    }
+
+    /* Drawing Animations */
+    .cr-arrow-path {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: cr-draw-line 1.5s ease-out forwards;
+        animation-delay: 0.5s; /* Wait a moment before drawing */
+    }
+
+    .cr-arrow-head {
+        stroke-dasharray: 30;
+        stroke-dashoffset: 30;
+        opacity: 0;
+        animation: cr-draw-head 0.5s ease-out forwards;
+        animation-delay: 1.8s; /* Draw head after line finishes */
+    }
+
+    @keyframes cr-draw-line {
+        to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes cr-draw-head {
+        to { stroke-dashoffset: 0; opacity: 1; }
+    }
+
+
+    /* Scroll Area */
+    .cr-scroll-area {
+        position: relative;
+        height: 700px;
+        overflow: hidden;
+    }
+
+    /* Grid Layout */
+    .cr-grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        height: 100%;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Column & Masking */
+    .cr-column {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+    }
+
+    /* Hover Pause */
+    .cr-column:hover .cr-track {
+        animation-play-state: paused;
+    }
+
+    /* Track */
+    .cr-track {
+        position: absolute;
+        top: 0; left: 0; width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        will-change: transform;
+    }
+
+    .cr-content-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Card Styling */
+    .cr-card {
+        background-color: #171717;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 24px;
+        color: #e5e5e5;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .cr-card:hover {
+        background-color: #222;
+        border-color: #555;
+    }
+
+    /* Card Header */
+    .cr-card-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .cr-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #333;
+        filter: grayscale(100%);
+        border: 1px solid #444;
+    }
+
+    .cr-user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cr-name {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #fff;
+        line-height: 1.2;
+    }
+
+    .cr-company {
+        font-size: 0.75rem;
+        color: #777;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+    }
+
+    /* Card Body */
+    .cr-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    /* Card Footer */
+    .cr-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        border-top: 1px solid #2a2a2a;
+    }
+
+    .cr-stars {
+        color: #999;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .cr-time {
+        font-size: 0.75rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    /* Animations */
+    .cr-scroll-up { animation: cr-scroll-up-anim 80s linear infinite; }
+    .cr-scroll-down { animation: cr-scroll-down-anim 90s linear infinite; transform: translateY(-50%); }
+
+    @keyframes cr-scroll-up-anim { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+    @keyframes cr-scroll-down-anim { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+    /* Blurry Overlays */
+    .cr-edge-overlay {
+        position: absolute;
+        top: 0; bottom: 0;
+        width: 15%;
+        z-index: 10;
+        pointer-events: none;
+        backdrop-filter: blur(0.1px);
+        -webkit-backdrop-filter: blur(1px);
+    }
+    .cr-overlay-left { left: 0; background: linear-gradient(to right, rgb(10, 10, 10, 1) 0%, rgba(10,10,10, 0.6) 30%, rgba(0, 0, 0, 0) 100%); }
+    .cr-overlay-right { right: 0; background: linear-gradient(to left, rgba(10,10,10, 1) 0%, rgba(10,10,10, 0.6) 30%, rgba(10,10,10, 0) 100%); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .cr-grid-container { grid-template-columns: repeat(2, 1fr); }
+        .cr-edge-overlay { width: 15%; }
+        .cr-column:nth-child(3), .cr-column:nth-child(4) { display: none; }
+    }
+    @media (max-width: 600px) {
+        .cr-grid-container { grid-template-columns: 1fr; }
+        .cr-edge-overlay { display: none; }
+        .cr-column:nth-child(2) { display: none; }
+        .cr-section-title { font-size: 2rem; }
+        
+        /* Stack Subtitle and Arrow on Mobile */
+        .cr-section-subtitle {
+            flex-wrap: wrap;
+        }
+        .cr-arrow-svg {
+            width: 60px;
+            height: 40px;
+            left: -70px;
+            top: 5px;
+        }
+    }
+    /* --- scoped CSS end --- */
