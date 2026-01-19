@@ -3,6 +3,8 @@
 ## Overview
 Glade is an advanced testimonial display component featuring a mesmerizing infinite scroll animation with bidirectional column movement. This component creates a dynamic, engaging showcase of client feedback through sophisticated CSS animations, gradient masking, and an elegant dark-mode aesthetic optimized for social proof presentation.
 
+<img width="1588" height="1125" alt="lefajmofokeng github io_Glade_" src="https://github.com/user-attachments/assets/05468a5b-c10f-4880-8eb2-bbd8ec5f9d7f" />
+
 ## Live Preview
 **Experience the infinite scroll:** [View Glade](https://lefajmofokeng.github.io/Glade)
 
